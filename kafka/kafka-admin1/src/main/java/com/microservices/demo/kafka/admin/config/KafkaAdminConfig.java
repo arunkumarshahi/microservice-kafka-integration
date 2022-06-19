@@ -9,6 +9,7 @@ import org.springframework.retry.annotation.EnableRetry;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 @EnableRetry
 @Configuration
@@ -23,7 +24,8 @@ public class KafkaAdminConfig {
 
     @Bean
     public AdminClient adminClient() {
-        return AdminClient.create(Map.of(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG,
-                kafkaConfigData.getBootstrapServers()));
+        Properties config = new Properties();
+        config.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG,  kafkaConfigData.getBootstrapServers());
+        return AdminClient.create(config);
     }
 }
