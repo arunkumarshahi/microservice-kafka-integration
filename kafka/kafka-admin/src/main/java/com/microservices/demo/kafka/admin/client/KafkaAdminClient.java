@@ -1,4 +1,4 @@
-package com.microservices.demo.kafka.admin.config.client;
+package com.microservices.demo.kafka.admin.client;
 
 import com.microservices.demo.config.KafkaConfigData;
 import com.microservices.demo.config.RetryConfigData;
@@ -21,6 +21,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
+
 @Component
 public class KafkaAdminClient {
 
@@ -59,6 +60,7 @@ public class KafkaAdminClient {
         }
         checkTopicsCreated();
     }
+
     public void checkTopicsCreated() {
         Collection<TopicListing> topics = getTopics();
         int retryCount = 1;
